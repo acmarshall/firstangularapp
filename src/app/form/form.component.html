@@ -3,7 +3,7 @@
 	<form class = "form" (ngSubmit) = "onSubmit()" #form = "ngForm">
 		<div class = "form-group">
 			<label for = "name"> Full Name: </label>
-			<input type = "text" class = "form-control" id = "name" required [(ngModel)]="model.name" name = "name" #name = "ngModel">
+			<input type = "text" class = "form-control" id = "name" placeholder = "Please Input Full Name" required [(ngModel)]="model.name" name = "name" #name = "ngModel">
 		</div>
 		<div [hidden] = "name.valid || name.pristine || name.touched" class = "alert alert-danger">
 			Invalid Name
@@ -18,8 +18,8 @@
 		</div>
 
 		<div class = "form-group">
-			<label for = "email"> Email: </label>
-			<input type = "email" class = "form-control" id = "email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{1,10}$" required [(ngModel)]="model.email" name = "email" #email = "ngModel">
+			<label for = "email"> Email Address: </label>
+			<input type = "email" class = "form-control" id = "email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{1,10}$" placeholder = "Please Input Email Address"required [(ngModel)]="model.email" name = "email" #email = "ngModel">
 		</div>
 		<div [hidden] = "email.valid || email.pristine || email.touched" class = "alert alert-danger">
 			Invalid Email Address
@@ -28,6 +28,7 @@
 		<div class = "form-group">
 			<label for = "state"> State: </label>
 			<select class = "form-control" id = "state" required [(ngModel)]="model.state" name = "state">
+				<option value="" disabled selected>Please Select A State Below</option>
 				<option *ngFor = "let st of state" [value] = "st"> {{st}}</option>
 			</select>
 		</div>
