@@ -1,0 +1,37 @@
+<div class = "container">
+	<h2 class = "text-center"> Register Below </h2>
+	<form class = "form" (ngSubmit) = "onSubmit()" #form = "ngForm">
+		<div class = "form-group">
+			<label for = "name"> Full Name: </label>
+			<input type = "text" class = "form-control" id = "name" required [(ngModel)]="model.name" name = "name" #name = "ngModel">
+		</div>
+		<div [hidden] = "name.valid || name.pristine || name.touched" class = "alert alert-danger">
+			Invalid Name
+		</div>
+
+		<div class = "form-group">
+			<label for = "number"> Phone Number: </label>
+			<input type = "tel" class = "form-control" id = "number" pattern = "[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder = "XXX-XXX-XXXX" required [(ngModel)]="model.number" name = "number" #number = "ngModel">
+		</div>
+		<div [hidden] = "number.valid || number.pristine || number.touched" class = "alert alert-danger">
+			Invalid Phone Number. Must be in the form XXX-XXX-XXXX			
+		</div>
+
+		<div class = "form-group">
+			<label for = "email"> Email: </label>
+			<input type = "email" class = "form-control" id = "email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{1,10}$" required [(ngModel)]="model.email" name = "email" #email = "ngModel">
+		</div>
+		<div [hidden] = "email.valid || email.pristine || email.touched" class = "alert alert-danger">
+			Invalid Email Address
+		</div>
+
+		<div class = "form-group">
+			<label for = "state"> State: </label>
+			<select class = "form-control" id = "state" required [(ngModel)]="model.state" name = "state">
+				<option *ngFor = "let st of state" [value] = "st"> {{st}}</option>
+			</select>
+		</div>
+
+		<button type = "submit" class = "btn btn-success" [disabled] = "!form.form.valid"> Submit </button>
+	</form>
+</div>
